@@ -1,0 +1,45 @@
+/*
+#include<stdio.h>
+int Fib(int n)
+{
+	if(n<=2)
+		return 1;
+	else
+		return Fib(n-1)+Fib(n-2);
+}
+int main()
+{
+	int n;
+	int count=0;
+	printf("求第n个斐波那契数:\n");
+	scanf("%d",&n);
+	int ret=Fib(n);
+	printf("第%d个斐波那契数为：%d\n",n,ret);
+	return 0;
+}
+*/
+#include<stdio.h>
+int Fib(int n)
+{
+	int a=1;
+	int b=1;
+	int c=1;
+	while(n>2)
+	{
+		c=a+b;
+		a=b;
+		b=c;
+		n--;
+	}
+	return c;
+}
+int main()
+{
+	int n;
+	int count=0;
+	printf("求第n个斐波那契数:\n");
+	scanf("%d",&n);
+	int ret=Fib(n);
+	printf("第%d个斐波那契数为：%d\n",n,ret);
+	return 0;
+}
