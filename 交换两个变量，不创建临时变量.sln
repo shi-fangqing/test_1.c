@@ -1,0 +1,13 @@
+#include<stdio.h>
+int main()
+{
+	int m,n;
+	printf("请输入两个整数：");
+	scanf("%d%d",&m,&n);
+	printf("\n交换前：m=%d n=%d",m,n);
+	m=m^n;
+	n=m^n;
+	m=m^n;
+	printf("\n交换后：m=%d n=%d\n",m,n);
+	return 0;
+}
