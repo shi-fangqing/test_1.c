@@ -31,9 +31,9 @@ void my_strcpy(char* dest,char* src)
 	while((*dest++=*src++)!='\0');
 }*/
 
-char* my_strcpy(char* dest,const char* src)
-{
-	char* ret=dest;
+char* my_strcpy(char* dest,const char* src)     //源字符串不需要更改，加上const
+{    
+	char* ret=dest; //保存目标字符串的地址
 	assert(dest!=NULL);//断言
 	assert(src!=NULL);//断言
 	while((*dest++=*src++)!='\0');//将src指向的字符串拷贝到dest指向的空间内
