@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+void menu()
+{
+	printf("**********************\n");
+	printf("****1.加法  2.减法****\n");
+	printf("****3.乘法  4.除法****\n");
+	printf("****5.异或  **********\n");
+	printf("********0.退出********\n");
+}
+
+int Add(int x,int y)
+{
+	return x+y;
+}
+
+int Sub(int x,int y)
+{
+	return x-y;
+}
+
+int Mul(int x,int y)
+{
+	return x*y;
+}
+
+int Div(int x,int y)
+{
+	return x/y;
+}
+
+int Xor(int x,int y)
+{
+	return x^y;
+}
+
+int main()
+{
+	int input=0;
+	int ret=0;
+	int x,y=0;
+	int (*pfArr[])(int,int)={0,Add,Sub,Mul,Div,Xor};  //函数指针，int (p*)(int,int)；函数指针数组,int(*p[])(int,int);函数指针数组的指针，int(*(*p)[])(int,int).
+	do
+	{
+		menu();
+		printf("请选择：");
+		scanf("%d",&input);
+		if(input>=1&&input<=5)
+		{
+			printf("请输入两个操作数：");
+			scanf("%d%d",&x,&y);
+			ret=pfArr[input](x,y);
+			printf("%d\n",ret);
+			system("pause");
+			system("cls");
+		}
+		else if(input==0)
+			break;
+		else
+		{
+			printf("选择错误！\n\n");
+			system("pause");
+			system("cls");
+		}
+	}while(input);
+	return 0;
+}
