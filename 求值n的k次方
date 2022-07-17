@@ -1,0 +1,21 @@
+#include<stdio.h>
+double pow(int n,int k)
+{
+	if(k>0)
+		return n*pow(n,k-1);
+	else if(k==0)   //结束条件
+		return 1;
+	else //k为负数时，取倒数，加符号变为正跳到大于0的条件。
+		return 1.0/pow(n,-k);
+}
+int main()
+{
+	int n=0;
+	int k=0;
+    double ret=0;
+	printf("请输入底数和幂数的值：");
+	scanf("%d%d",&n,&k);
+	ret=pow(n,k);
+	printf("%d的%d次方为：%lf\n",n,k,ret);
+	return 0;
+}
