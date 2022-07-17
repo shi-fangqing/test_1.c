@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+/*
+int Bubble_sort(int arr[],int sz)
+{
+	int i;
+	int j;
+	int t;
+	for(i=0;i<sz-1;i++)
+	{
+		for(j=0;j<sz-1-i;j++)
+		{
+			if(arr[j]>arr[j+1])
+			{
+				t=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=t;
+			}
+		}
+	}
+	return 0;
+}
+int main()
+{
+	int arr[]={5,4,3,2,1,6,7,8,9};
+	int i=0;
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	printf("升序结果为：\n");
+	Bubble_sort(arr,sz);
+	for(i=0;i<sz;i++)
+	{
+		printf("%d  ",arr[i]);
+	}
+	printf("\n");
+	system("pause");
+	return 0;
+}*/
+
+int Bubble_sort(int arr[],int sz)
+{
+	int i;
+	int j;
+	int t;
+	for(i=0;i<sz-1;i++)
+	{
+		int flag=1;       //假设已经有序
+		for(j=0;j<sz-1-i;j++)
+		{
+			if(arr[j]>arr[j+1])
+			{
+				t=arr[j];
+				arr[j]=arr[j+1];
+				arr[j+1]=t;
+				flag=0;
+			}
+		}
+		if(flag==1)
+			break;
+	}
+	return 0;
+}
+
+
+int main()
+{
+	int arr[]={5,4,3,2,1,6,7,8,9};
+	int i=0;
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	printf("升序结果为：\n");
+	Bubble_sort(arr,sz);
+	for(i=0;i<sz;i++)
+	{
+		printf("%d  ",arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
