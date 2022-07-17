@@ -1,0 +1,19 @@
+//递归计算字符串的长度
+#include<stdio.h>
+#include<assert.h>
+int my_strlen(const char* p)
+{
+	assert(p!=NULL); //断言
+	if(*p!='\0')
+		return 1+my_strlen(p+1);
+	else
+		return 0;
+}
+int main()
+{
+	int len=0;
+	char str[]="hello";
+	len=my_strlen(str);
+	printf("%d\n",len);
+	return 0;
+}
