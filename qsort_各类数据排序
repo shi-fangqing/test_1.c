@@ -1,0 +1,110 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+//定义学生的结构体
+typedef struct students
+{
+	char name[20];
+	short age;
+}stu;
+
+//浮点数进行比较
+int cmp_double(const void* e1,const void* e2)
+{
+	if(*((double*)e1)>*((double*)e2))
+		return 1;
+	else if(*((double*)e1)<*((double*)e2))
+		return -1;
+	else
+		return 0;
+}
+
+//整型进行比较
+int cmp_int(const void* e1,const void* e2)
+{
+	return *((int*)e1)-*((int*)e2);
+
+}
+//字符串进行比较
+int cmp_arr_by_name(const void* e1,const void* e2)
+{
+	return strcmp(((stu*)e1)->name,((stu*)e2)->name);
+}
+
+//年龄（整型）进行比较
+int cmp_arr_by_age(const void* e1,const void* e2)
+{
+	return ((stu*)e1)->age-((stu*)e2)->age;
+}
+
+void test()
+{
+	int i=0;
+	double arr[]={9.0,8.0,7.0,6.0,5.3,5.2,3,2,1};
+	int sz=sizeof(arr)/sizeof(arr[0]); 
+	printf("浮点数排序：");
+	qsort(arr,sz,sizeof(arr[0]),cmp_double); 
+	for(i=0;i<sz;i++)                      
+	{
+		printf("%f ",arr[i]);
+	}
+	printf("\n");
+}
+
+void test_1()
+{
+	int i=0;
+	int arr[]={9,8,7,6,5,4,3,2,1};
+	int sz=sizeof(arr)/sizeof(arr[0]);     //qsort：第一个参数：数组第一个元素的地址；第二个参数：数组中元素的个数；第三个参数：数组中每个元素的大小，单位字节；
+	printf("整型数排序：");
+	qsort(arr,sz,sizeof(arr[0]),cmp_int);  //qsort快速排序函数，cmp_int是函数指针，这个函数是需要自己写的。
+	for(i=0;i<sz;i++)                      
+	{
+		printf("%d ",arr[i]);
+	}
+	printf("\n");
+}
+
+void test_2()
+{
+	int i=0;
+	stu arr[]={{"张三",19},{"李四",18},{"王二",20}};
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	printf("按姓名进行排序：\n");
+	qsort(arr,sz,sizeof(arr[0]),cmp_arr_by_name);
+	for(i=0;i<sz;i++)
+	{
+		printf("%s ",arr[i].name);
+		printf("%d ",arr[i].age);
+		printf("\n");
+	}
+}
+
+void test_3()
+{
+	int i=0;
+	stu arr[]={{"张三",19},{"李四",18},{"王二",20}};
+	int sz=sizeof(arr)/sizeof(arr[0]);
+	printf("按年龄进行排序：\n");
+	qsort(arr,sz,sizeof(arr[0]),cmp_arr_by_age);
+	for(i=0;i<sz;i++)
+	{
+		printf("%s ",arr[i].name);
+		printf("%d ",arr[i].age);
+		printf("\n");
+	}
+}
+
+int main()
+{
+	test();
+	printf("\n");
+	test_1();
+	printf("\n");
+	test_2();
+	printf("\n");
+	test_3();
+	printf("\n");
+	return 0;
+}
