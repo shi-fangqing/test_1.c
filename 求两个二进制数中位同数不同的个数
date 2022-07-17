@@ -1,0 +1,38 @@
+#include<stdio.h>
+/*
+int get_diff_bit(int m,int n)
+{
+	int count=0;
+	unsigned int s=0;
+	s=m^n;    //不同位变为1，相同为变为0
+	while(s)
+	{
+		if(s%2==1)
+			count++;  //记录1出现的次数
+		s=s/2;
+	}
+	return count;
+}*/
+int get_diff_bit(int m,int n)
+{
+	int count=0;
+	int s=0;
+	s=m^n;
+	while(s)
+	{
+		s=s&(s-1);   //每按位与一次，就少一个1，计算少了多少1.
+		count++;
+	}
+	return count;
+}
+int main()
+{
+	int m;
+	int n;
+	int count;
+	printf("请输入两个整数：");
+	scanf("%d%d",&m,&n);
+	count=get_diff_bit(m,n);
+	printf("不同位的个数：%d\n",count);
+	return 0;
+}
