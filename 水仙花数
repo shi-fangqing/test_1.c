@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+	int i;
+	int j;
+	int x;
+	int sum;
+	int count;
+	printf("求1-10000之间的水仙花数：\n"); //水仙花数：例：153=1^3+5^3+3^3.
+	for(i=1;i<=10000;i++)
+	{
+		j=i;
+	        count=0;
+		while(j)
+		{
+			j=j/10;
+			count++;   //记录当前数字的位数
+		}
+		j=i;
+		sum=0;
+		x=0;
+		while(j)
+		{
+			int pow=1;
+			for(x=1;x<=count;x++)//每个数需要求：总位数的次方数
+			{
+				pow=(j%10)*pow;
+			}
+			j=j/10;
+			sum=pow+sum;
+		}
+		if(i==sum)
+			printf("%d\n",i);
+	}
+	return 0;
+}
