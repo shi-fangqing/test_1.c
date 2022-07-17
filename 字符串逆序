@@ -1,0 +1,46 @@
+#include<stdio.h>
+int my_strlen(char arr[])
+{
+	char* p=arr;
+	int count=0;
+	while(*p!='\0')
+	{
+		count++;
+		p++;
+	}
+	return count;
+}
+/*
+void reverse_str(char arr[])       
+{   //非递归实现，字符串的转置
+	int left=0;
+	int right=my_strlen(arr)-1;
+	int temp=0;
+	while(left<right)
+	{
+		temp=arr[left];
+		arr[left]=arr[right];
+		arr[right]=temp;
+		left++;
+		right--;
+	}
+}*/
+void reverse_str(char* arr)
+{   //递归求字符串的转置
+	char temp=arr[0];
+	int len=my_strlen(arr);
+	arr[0]=arr[len-1];
+	arr[len-1]='\0';
+	if(my_strlen(arr+1)>=2)
+		reverse_str(arr+1);
+	arr[len-1]=temp;
+}
+int main()
+{
+	char arr[100];
+	printf("请输入一个字符串：");
+	scanf("%s",arr);
+	reverse_str(arr);
+	printf("逆序后：%s\n",arr);
+	return 0;
+}
