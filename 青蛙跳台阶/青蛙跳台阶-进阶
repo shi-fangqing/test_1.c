@@ -1,0 +1,33 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#define N 100
+int Get(long long* arr,int pos)
+{
+	int i = 0;
+	int j = 0;
+	if (pos <=1)
+		return 1;
+	else
+	{
+		for (i = 2; i <=pos; i++)
+		{
+			arr[i] = 2 * arr[i - 1];
+		}
+		return arr[pos];
+	}
+}
+
+int main()
+{
+	int pos = 0;
+	int i = 0;
+	long long ret = 0;
+	long long arr[N]={0};
+	arr[0] = 1;
+	arr[1] = 1;
+	printf("请输入你要跳到第几个台阶：");
+	scanf("%d", &pos);
+	ret=Get(arr,pos);
+	printf("跳到第%d个台阶的跳法：%lld种", pos,ret);
+	return 0;
+}
