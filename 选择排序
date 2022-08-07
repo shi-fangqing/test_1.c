@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int main()
+{
+	int i = 0;
+	int j = 0;
+	int arr[] = { 3,2,4,1,1,2,0,5 };
+	//第一位与后面的位进行比较，第一位小于后面位就交换位置
+	//依次第二位----------------第二位--------------------
+	//一直有n-1次这样的循环
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	for (i = 0; i < sz-1; i++)
+	{
+		for (j = i + 1; j < sz; j++)
+		{
+			if (arr[i] > arr[j])
+			{
+				int tmp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = tmp;
+			}
+		}
+	}
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+	return 0;
+}
