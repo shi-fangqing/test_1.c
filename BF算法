@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+int main()
+{
+	int k = 0;
+	int i = 0;
+	int j = 0;
+	char S[] = { 'a','b','c','d','e','f' };
+	char T[] = { 'c','d','e','f' };
+	int sz_S = sizeof(S) / sizeof(S[0]);
+	int sz_T = sizeof(T) / sizeof(T[0]);
+	for (k = 0; k < sz_S; k++)
+	{
+		if (sz_S - k < sz_T)  //主串长度小于子串是返回-1
+			return -1;
+		i = k;
+		j = 0;
+		while (S[i] == T[j])
+		{
+			i++;           
+			j++;
+		}
+		if (j > sz_T - 1)   //判断循环结束的原因，是否找到了子串
+		{
+			return k;      //找到该子串后，返回子串在主串中第一次出现的下标
+		}
+	}
+	return 0;
+}
